@@ -1,2 +1,19 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+  <application>
+    <meta-data android:name="com.google.android.gms.car.application" android:resource="@xml/car_screens_app_desc" />
+    <meta-data android:name="androidx.car.app.minCarApiLevel" android:value="1" />
+    <!--
+      Android Auto entry point. The app category is supplied by the app through
+      the manifest placeholder `carScreensCategory` (see README), e.g.
+      androidx.car.app.category.IOT, .POI, .NAVIGATION, .MESSAGING ...
+    -->
+    <service
+      android:name="com.carscreens.CarScreensService"
+      android:exported="true">
+      <intent-filter>
+        <action android:name="androidx.car.app.CarAppService" />
+        <category android:name="${carScreensCategory}" />
+      </intent-filter>
+    </service>
+  </application>
 </manifest>

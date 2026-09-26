@@ -1,5 +1,5 @@
 #import <CarScreensSpec/CarScreensSpec.h>
 
-@interface CarScreens : NSObject <NativeCarScreensSpec>
+@interface CarScreens : NativeCarScreensSpecBase <NativeCarScreensSpec>
 
 @end

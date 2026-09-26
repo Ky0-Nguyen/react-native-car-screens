@@ -52,4 +52,5 @@ android {
 
 dependencies {
   implementation "com.facebook.react:react-android"
+  implementation "androidx.car.app:app:1.7.0"
 }

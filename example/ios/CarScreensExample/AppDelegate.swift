@@ -2,6 +2,7 @@ import UIKit
 import React
 import React_RCTAppDelegate
 import ReactAppDependencyProvider
+import CarScreens
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,13 +22,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     reactNativeDelegate = delegate
     reactNativeFactory = factory
 
-    window = UIWindow(frame: UIScreen.main.bounds)
-
-    factory.startReactNative(
-      withModuleName: "CarScreensExample",
-      in: window,
-      launchOptions: launchOptions
-    )
+    // CarPlay needs the scene life cycle: the phone window now comes from
+    // RNCarScreensPhoneSceneDelegate (see Info.plist), which calls this.
+    CarScreensPhoneSceneDelegate.start = { window, options in
+      factory.startReactNative(
+        withModuleName: "CarScreensExample",
+        in: window,
+        launchOptions: options ?? launchOptions
+      )
+    }
 
     return true
   }

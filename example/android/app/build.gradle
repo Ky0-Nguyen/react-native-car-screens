@@ -79,6 +79,8 @@ android {
 
     namespace "carscreens.example"
     defaultConfig {
+        // Android Auto category for react-native-car-screens
+        manifestPlaceholders["carScreensCategory"] = "androidx.car.app.category.IOT"
         applicationId "carscreens.example"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
